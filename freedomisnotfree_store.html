@@ -33,7 +33,7 @@
     .hero{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:1.75rem 2rem;margin-bottom:1.5rem;}
     .hero h1{font-size:22px;font-weight:700;margin-bottom:5px;}
     .hero p{font-size:14px;color:var(--text-sec);line-height:1.6;}
-    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.5rem;}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.5rem;}
     .stat-card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-md);padding:.9rem 1rem;}
     .stat-label{font-size:12px;color:var(--text-sec);margin-bottom:4px;}
     .stat-value{font-size:20px;font-weight:600;}
@@ -46,7 +46,6 @@
     .business-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:14px;}
     .biz-card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:box-shadow .15s;}
     .biz-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.08);}
-    .biz-card.cancelled{border-color:var(--border-danger);}
     .biz-card.suspect{border-color:var(--border-warn);}
     .biz-card.pending{border-color:var(--border-sec);opacity:.85;}
     .biz-thumb-wrap{position:relative;width:100%;height:148px;overflow:hidden;}
@@ -54,7 +53,6 @@
     .biz-thumb-placeholder{width:100%;height:100%;background:var(--bg-sec);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--text-tert);font-size:12px;}
     .thumb-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
     .thumb-overlay span{color:#fff;font-size:13px;font-weight:600;padding:4px 12px;border-radius:20px;letter-spacing:.02em;}
-    .overlay-cancelled{background:rgba(153,27,27,.55);}
     .overlay-suspect{background:rgba(146,64,14,.55);}
     .overlay-pending{background:rgba(0,0,0,.45);}
     .biz-body{padding:.9rem 1rem .85rem;}
@@ -70,8 +68,6 @@
     .map-logo{width:18px;height:18px;border-radius:4px;flex-shrink:0;}
     .map-div{height:0.5px;background:var(--border);margin:0 10px;}
     .biz-desc{font-size:12px;color:var(--text-sec);line-height:1.55;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:37px;}
-
-    /* 신고 섹션 */
     .report-section{border-top:0.5px solid var(--border);padding-top:9px;}
     .report-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
     .report-count-label{font-size:12px;color:var(--text-sec);}
@@ -85,24 +81,19 @@
     .dot.amber{background:#d97706;border-color:#d97706;}
     .dot.red{background:#dc2626;border-color:#dc2626;}
     .report-footer{display:flex;justify-content:space-between;align-items:center;}
-
-    /* 상태 태그 */
     .status-tag{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:600;white-space:nowrap;flex-shrink:0;}
     .tag-good{background:#dcfce7;color:#166534;}
     .tag-caution{background:#fef9c3;color:#854d0e;}
     .tag-warning{background:#ffedd5;color:#9a3412;}
-    .tag-cancelled{background:#fee2e2;color:#991b1b;}
     .tag-suspect{background:#fef3c7;color:#92400e;}
     .tag-pending{background:var(--bg-sec);color:var(--text-sec);}
-
-    /* 버튼 */
     .btn{font-family:inherit;cursor:pointer;border-radius:var(--radius-md);font-size:14px;padding:9px 18px;font-weight:500;transition:all .15s;border:none;}
     .btn-primary{background:var(--text);color:var(--bg);}
     .btn-primary:hover{opacity:.85;}
     .btn-ghost{background:transparent;border:0.5px solid var(--border-sec);color:var(--text-sec);}
     .btn-ghost:hover{background:var(--bg-sec);}
-    .btn-sm{padding:5px 10px;font-size:12px;border-radius:var(--radius-md);font-family:inherit;cursor:pointer;font-weight:500;transition:all .15s;}
-    .btn-report{background:transparent;border:0.5px solid var(--border-danger);color:var(--text-danger);}
+    .btn-sm{padding:5px 10px;font-size:12px;border-radius:var(--radius-md);font-family:inherit;cursor:pointer;font-weight:500;transition:all .15s;border:none;}
+    .btn-report{background:transparent;border:0.5px solid var(--border-danger);color:var(--text-danger);border-radius:var(--radius-md);padding:5px 10px;font-size:12px;cursor:pointer;font-family:inherit;}
     .btn-report:hover{background:var(--bg-danger);}
     .btn-report:disabled{opacity:.4;cursor:not-allowed;}
     .btn-approve{background:#dcfce7;color:#166534;border:0.5px solid rgba(22,163,74,.3);}
@@ -111,19 +102,18 @@
     .btn-reject:hover{background:#fecaca;}
     .btn-suspect{background:#fef3c7;color:#92400e;border:0.5px solid var(--border-warn);}
     .btn-suspect:hover{background:#fde68a;}
-
-    /* 관리자 액션 바 */
     .admin-actions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
-
     /* 모달 */
     .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:center;justify-content:center;padding:1rem;}
     .modal-bg.open{display:flex;}
-    .modal{background:var(--bg);border-radius:var(--radius-lg);padding:1.75rem;width:520px;max-width:100%;border:0.5px solid var(--border-sec);max-height:92vh;overflow-y:auto;}
+    .modal{background:var(--bg);border-radius:var(--radius-lg);padding:1.75rem;width:420px;max-width:100%;border:0.5px solid var(--border-sec);max-height:92vh;overflow-y:auto;}
+    .modal.wide{width:520px;}
     .modal h2{font-size:18px;font-weight:600;margin-bottom:1.25rem;}
     .form-group{margin-bottom:1rem;}
     .form-group label{display:block;font-size:13px;color:var(--text-sec);margin-bottom:5px;}
     .form-group input,.form-group select,.form-group textarea{width:100%;padding:9px 11px;border:0.5px solid var(--border-sec);border-radius:var(--radius-md);font-size:14px;background:var(--bg);color:var(--text);font-family:inherit;outline:none;transition:border-color .15s;}
     .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--text);}
+    .form-group input[type=password]{letter-spacing:.1em;}
     .form-group textarea{resize:vertical;min-height:70px;line-height:1.5;}
     .checkbox-row{display:flex;align-items:flex-start;gap:10px;padding:11px;background:var(--bg-sec);border-radius:var(--radius-md);border:0.5px solid var(--border);}
     .checkbox-row input[type=checkbox]{margin-top:2px;width:15px;height:15px;flex-shrink:0;accent-color:var(--text);cursor:pointer;}
@@ -139,7 +129,8 @@
     .modal-footer{display:flex;justify-content:flex-end;gap:8px;margin-top:1.5rem;padding-top:1rem;border-top:0.5px solid var(--border);}
     .info-note{font-size:12px;color:var(--text-sec);padding:8px 11px;background:var(--bg-sec);border-radius:var(--radius-md);border:0.5px solid var(--border);line-height:1.5;}
     .info-box{background:var(--bg-warn);border:0.5px solid var(--border-warn);border-radius:var(--radius-md);padding:10px 13px;margin-bottom:1.25rem;font-size:13px;color:var(--text-warn);line-height:1.5;}
-    .danger-box{background:var(--bg-danger);border:0.5px solid var(--border-danger);border-radius:var(--radius-md);padding:10px 13px;margin-bottom:1.25rem;font-size:13px;color:var(--text-danger);line-height:1.5;}
+    .error-msg{font-size:12px;color:var(--text-danger);margin-top:6px;display:none;}
+    .admin-bar{background:var(--bg-warn);border:0.5px solid var(--border-warn);border-radius:var(--radius-md);padding:9px 14px;margin-bottom:1.25rem;font-size:13px;color:var(--text-warn);display:flex;align-items:center;gap:8px;}
     .empty-state{grid-column:1/-1;text-align:center;padding:3.5rem 1rem;color:var(--text-tert);font-size:14px;}
     .empty-state i{font-size:34px;display:block;margin-bottom:10px;}
     .tip-wrap{position:relative;display:inline-block;}
@@ -148,11 +139,9 @@
     .tip-wrap:hover .tip-box{display:block;}
     .toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:10px 20px;border-radius:var(--radius-md);font-size:14px;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;max-width:90vw;box-shadow:0 4px 20px rgba(0,0,0,.2);}
     .toast.show{opacity:1;}
-    /* 관리자 패널 배지 */
-    .admin-bar{background:var(--bg-warn);border:0.5px solid var(--border-warn);border-radius:var(--radius-md);padding:9px 14px;margin-bottom:1.25rem;font-size:13px;color:var(--text-warn);display:flex;align-items:center;gap:8px;}
     @media(max-width:600px){
       .main{padding:1rem;}
-      .stats{grid-template-columns:repeat(2,1fr);}
+      .stats{grid-template-columns:repeat(3,1fr);}
       .hero{padding:1.25rem;}
     }
   </style>
@@ -163,9 +152,9 @@
   <div class="site-header-inner">
     <a class="site-logo" href="#">🇰🇷 우파 가게 디렉토리</a>
     <div class="header-actions">
-      <button class="btn btn-ghost" style="font-size:13px;padding:7px 13px;" onclick="toggleAdminMode()">
+      <button class="btn btn-ghost" style="font-size:13px;padding:7px 13px;" onclick="handleAdminBtn()">
         <i class="ti ti-settings" style="font-size:14px;vertical-align:-2px;margin-right:4px;" aria-hidden="true"></i>
-        <span id="admin-btn-label">관리자 모드</span>
+        <span id="admin-btn-label">관리자</span>
       </button>
       <button class="btn btn-primary" onclick="openRegisterModal()">+ 사업체 등록</button>
     </div>
@@ -187,14 +176,12 @@
     <div class="stat-card"><div class="stat-label">활성 사업체</div><div class="stat-value" id="stat-active">0</div></div>
     <div class="stat-card"><div class="stat-label">승인 대기</div><div class="stat-value" id="stat-pending">0</div></div>
     <div class="stat-card"><div class="stat-label">애국 의심 가게</div><div class="stat-value" id="stat-suspect">0</div></div>
-    <div class="stat-card"><div class="stat-label">취소 가게</div><div class="stat-value" id="stat-cancelled">0</div></div>
   </div>
 
   <div class="tabs">
     <button class="tab active" onclick="switchTab('active',this)">활성 목록</button>
-    <button class="tab" onclick="switchTab('pending',this)">승인 대기 <span class="tab-badge" id="pending-badge">0</span></button>
-    <button class="tab" onclick="switchTab('suspect',this)">애국 의심 가게</button>
-    <button class="tab" onclick="switchTab('cancelled',this)">취소 가게 리스트</button>
+    <button class="tab" id="tab-btn-pending" onclick="switchTab('pending',this)">승인 대기 <span class="tab-badge" id="pending-badge">0</span></button>
+    <button class="tab" id="tab-btn-suspect" onclick="switchTab('suspect',this)">애국 의심 가게</button>
   </div>
 
   <div id="tab-active"><div class="business-grid" id="active-list"></div></div>
@@ -212,18 +199,28 @@
     </div>
     <div class="business-grid" id="suspect-list"></div>
   </div>
-  <div id="tab-cancelled" style="display:none;">
-    <div class="danger-box">
-      <i class="ti ti-ban" style="font-size:14px;vertical-align:-2px;margin-right:5px;" aria-hidden="true"></i>
-      신고 누적으로 자동 취소되었거나 관리자가 취소한 사업체 목록입니다.
-    </div>
-    <div class="business-grid" id="cancelled-list"></div>
-  </div>
 </main>
+
+<!-- 관리자 로그인 모달 -->
+<div class="modal-bg" id="admin-login-modal">
+  <div class="modal">
+    <h2>🔐 관리자 로그인</h2>
+    <div class="form-group">
+      <label>비밀번호</label>
+      <input type="password" id="admin-pw-input" placeholder="비밀번호를 입력하세요"
+        onkeydown="if(event.key==='Enter')submitAdminLogin()" />
+      <div class="error-msg" id="admin-pw-error">비밀번호가 올바르지 않습니다.</div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('admin-login-modal')">취소</button>
+      <button class="btn btn-primary" onclick="submitAdminLogin()">로그인</button>
+    </div>
+  </div>
+</div>
 
 <!-- 등록 모달 -->
 <div class="modal-bg" id="register-modal">
-  <div class="modal">
+  <div class="modal wide">
     <h2>사업체 등록 신청</h2>
     <div class="info-note" style="margin-bottom:1rem;">
       <i class="ti ti-info-circle" style="font-size:13px;vertical-align:-1px;margin-right:4px;" aria-hidden="true"></i>
@@ -285,7 +282,7 @@
     <div class="form-group"><label>상세 내용</label><textarea id="report-detail" placeholder="신고 내용을 자세히 작성해 주세요"></textarea></div>
     <div class="info-note">
       <i class="ti ti-shield" style="font-size:13px;vertical-align:-1px;margin-right:4px;" aria-hidden="true"></i>
-      소수의 신고로는 취소되지 않습니다. 여러 사람의 신고가 쌓여야 반영됩니다.
+      소수의 신고로는 반영되지 않습니다. 여러 사람의 신고가 쌓여야 반영됩니다.
     </div>
     <div class="modal-footer">
       <button class="btn btn-ghost" onclick="closeModal('report-modal')">취소</button>
@@ -297,6 +294,15 @@
 <div class="toast" id="toast"></div>
 
 <script>
+// 비밀번호 해시 확인 (SHA-256)
+const ADMIN_HASH = "b5a451e2a9b65a29af9c74db6618cf19e7c0e0a59d6ded2e374b98cd826d1ea5";
+
+async function hashPassword(pw) {
+  const enc = new TextEncoder().encode(pw);
+  const buf = await crypto.subtle.digest('SHA-256', enc);
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
 const WILSON_THRESHOLD = 0.30, Z = 1.96, MAX_FILE_SIZE = 5*1024*1024;
 let isAdmin = false;
 let pendingThumb = null, reportingId = null;
@@ -307,10 +313,10 @@ function wilsonScore(r,v){
   return Math.max(0,(p+z2/(2*v)-Z*Math.sqrt((p*(1-p)+z2/(4*v))/v))/(1+z2/v));
 }
 function trustLevel(s){
-  if(s>=WILSON_THRESHOLD)      return{level:4,label:'신고 많음',cls:'tag-warning',dotCls:'red'};
-  if(s>=WILSON_THRESHOLD*0.6)  return{level:3,label:'신고 있음',cls:'tag-caution',dotCls:'amber'};
-  if(s>=WILSON_THRESHOLD*0.3)  return{level:2,label:'신고 소수',cls:'tag-caution',dotCls:'amber'};
-  return                              {level:1,label:'신고 없음',cls:'tag-good',   dotCls:'green'};
+  if(s>=WILSON_THRESHOLD)     return{level:4,label:'신고 많음',cls:'tag-warning',dotCls:'red'};
+  if(s>=WILSON_THRESHOLD*0.6) return{level:3,label:'신고 있음',cls:'tag-caution',dotCls:'amber'};
+  if(s>=WILSON_THRESHOLD*0.3) return{level:2,label:'신고 소수',cls:'tag-caution',dotCls:'amber'};
+  return                             {level:1,label:'신고 없음',cls:'tag-good',   dotCls:'green'};
 }
 function dotsHtml(level,dotCls){
   const n=level>=4?5:level===3?4:level===2?2:1;
@@ -321,8 +327,8 @@ function getSid(){
   if(!id){id='u_'+Math.random().toString(36).slice(2);sessionStorage.setItem('_sid',id);}
   return id;
 }
-function naverUrl(addr,name){return`https://map.naver.com/v5/search/${encodeURIComponent(addr+' '+name)}`;}
-function kakaoUrl(addr,name){return`https://map.kakao.com/?q=${encodeURIComponent(addr+' '+name)}`;}
+function naverUrl(a,n){return`https://map.naver.com/v5/search/${encodeURIComponent(a+' '+n)}`;}
+function kakaoUrl(a,n){return`https://map.kakao.com/?q=${encodeURIComponent(a+' '+n)}`;}
 
 const PLACEHOLDER={
   '음식점/카페':'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&q=70',
@@ -332,40 +338,74 @@ const PLACEHOLDER={
   '건강/미용':'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=500&q=70',
 };
 
-// status: 'active' | 'pending' | 'suspect' | 'cancelled'
 let db={
   nextId:7,
   businesses:[
-    {id:1,name:'태극 한식당',  category:'음식점/카페', desc:'전통 한식으로 건강한 한끼를 제공합니다. 국내산 재료만 사용합니다.',    address:'서울특별시 종로구 세종대로 175',      status:'active',   reports:1, views:40,reportedBy:['u_s1'],thumb:null},
-    {id:2,name:'자유 서점',    category:'소매/유통',   desc:'보수 논평, 역사, 경제 분야 서적을 전문으로 취급하는 독립 서점입니다.',address:'부산광역시 해운대구 해운대해변로 264',status:'active',   reports:2, views:35,reportedBy:['u_s2','u_s3'],thumb:null},
-    {id:3,name:'애국 세탁소',  category:'기타',        desc:'20년 전통의 동네 세탁소입니다. 친절하고 꼼꼼한 서비스를 약속드립니다.',address:'대구광역시 중구 동성로 20',          status:'suspect',  reports:8, views:22,reportedBy:['u_s4','u_s5','u_s6','u_s7','u_s8','u_s9','u_s10','u_s11'],thumb:null},
-    {id:4,name:'나라사랑 학원',category:'교육/학원',   desc:'올바른 역사 교육과 국어 교육을 통해 미래 세대를 양성합니다.',        address:'인천광역시 남동구 소래로 100',        status:'cancelled', reports:14,views:20,reportedBy:['u_a1','u_a2','u_a3','u_a4','u_a5','u_a6','u_a7','u_a8','u_a9','u_a10','u_a11','u_a12','u_a13','u_a14'],thumb:null},
-    {id:5,name:'전통 이발소',  category:'건강/미용',   desc:'30년 경력의 이발사가 운영하는 정통 이발소입니다.',                  address:'서울특별시 마포구 홍익로 20',         status:'active',   reports:0, views:18,reportedBy:[],thumb:null},
-    {id:6,name:'한강 치킨',    category:'음식점/카페', desc:'국내산 닭만 사용하는 수제 치킨 전문점입니다.',                      address:'서울특별시 용산구 이태원로 200',       status:'pending',  reports:0, views:0, reportedBy:[],thumb:null},
+    {id:1,name:'태극 한식당',  category:'음식점/카페', desc:'전통 한식으로 건강한 한끼를 제공합니다. 국내산 재료만 사용합니다.',     address:'서울특별시 종로구 세종대로 175',      status:'active', reports:1, views:40,reportedBy:['u_s1'],thumb:null},
+    {id:2,name:'자유 서점',    category:'소매/유통',   desc:'보수 논평, 역사, 경제 분야 서적을 전문으로 취급하는 독립 서점입니다.', address:'부산광역시 해운대구 해운대해변로 264',status:'active', reports:2, views:35,reportedBy:['u_s2','u_s3'],thumb:null},
+    {id:3,name:'애국 세탁소',  category:'기타',        desc:'20년 전통의 동네 세탁소입니다. 친절하고 꼼꼼한 서비스를 약속드립니다.',address:'대구광역시 중구 동성로 20',           status:'suspect',reports:8, views:22,reportedBy:['u_s4','u_s5','u_s6','u_s7','u_s8','u_s9','u_s10','u_s11'],thumb:null},
+    {id:4,name:'전통 이발소',  category:'건강/미용',   desc:'30년 경력의 이발사가 운영하는 정통 이발소입니다.',                   address:'서울특별시 마포구 홍익로 20',         status:'active', reports:0, views:18,reportedBy:[],thumb:null},
+    {id:5,name:'한강 치킨',    category:'음식점/카페', desc:'국내산 닭만 사용하는 수제 치킨 전문점입니다.',                       address:'서울특별시 용산구 이태원로 200',       status:'pending',reports:0, views:0, reportedBy:[],thumb:null},
   ]
 };
 
+/* ── 관리자 로그인 ── */
+function handleAdminBtn(){
+  if(isAdmin){ logoutAdmin(); }
+  else { openAdminLogin(); }
+}
+function openAdminLogin(){
+  document.getElementById('admin-pw-input').value='';
+  document.getElementById('admin-pw-error').style.display='none';
+  document.getElementById('admin-login-modal').classList.add('open');
+  setTimeout(()=>document.getElementById('admin-pw-input').focus(),100);
+}
+async function submitAdminLogin(){
+  const pw = document.getElementById('admin-pw-input').value;
+  const hash = await hashPassword(pw);
+  if(hash === ADMIN_HASH){
+    isAdmin=true;
+    closeModal('admin-login-modal');
+    document.getElementById('admin-btn-label').textContent='관리자 로그아웃';
+    document.getElementById('admin-bar').style.display='flex';
+    // 대기/의심 탭 강조
+    document.getElementById('tab-btn-pending').style.borderColor='var(--border-warn)';
+    document.getElementById('tab-btn-suspect').style.borderColor='var(--border-warn)';
+    render();
+    showToast('관리자 모드 활성화됨');
+  } else {
+    document.getElementById('admin-pw-error').style.display='block';
+    document.getElementById('admin-pw-input').value='';
+    document.getElementById('admin-pw-input').focus();
+  }
+}
+function logoutAdmin(){
+  isAdmin=false;
+  document.getElementById('admin-btn-label').textContent='관리자';
+  document.getElementById('admin-bar').style.display='none';
+  document.getElementById('tab-btn-pending').style.borderColor='';
+  document.getElementById('tab-btn-suspect').style.borderColor='';
+  render();
+  showToast('관리자 모드 종료됨');
+}
+
 /* ── 렌더 ── */
 function render(){
-  const groups={active:[],pending:[],suspect:[],cancelled:[]};
+  const groups={active:[],pending:[],suspect:[]};
   db.businesses.forEach(b=>groups[b.status]&&groups[b.status].push(b));
-
-  document.getElementById('stat-active').textContent   =groups.active.length;
-  document.getElementById('stat-pending').textContent  =groups.pending.length;
-  document.getElementById('stat-suspect').textContent  =groups.suspect.length;
-  document.getElementById('stat-cancelled').textContent=groups.cancelled.length;
-  document.getElementById('pending-badge').textContent =groups.pending.length;
-
-  renderList('active-list',   groups.active,    'active');
-  renderList('pending-list',  groups.pending,   'pending');
-  renderList('suspect-list',  groups.suspect,   'suspect');
-  renderList('cancelled-list',groups.cancelled, 'cancelled');
+  document.getElementById('stat-active').textContent  =groups.active.length;
+  document.getElementById('stat-pending').textContent =groups.pending.length;
+  document.getElementById('stat-suspect').textContent =groups.suspect.length;
+  document.getElementById('pending-badge').textContent=groups.pending.length;
+  renderList('active-list', groups.active, 'active');
+  renderList('pending-list',groups.pending,'pending');
+  renderList('suspect-list',groups.suspect,'suspect');
 }
 
 function renderList(elId,list,type){
   const el=document.getElementById(elId), sid=getSid();
   if(!list.length){
-    const msgs={active:'활성 사업체가 없습니다.',pending:'승인 대기 중인 사업체가 없습니다.',suspect:'애국 의심 가게가 없습니다.',cancelled:'취소된 사업체가 없습니다.'};
+    const msgs={active:'활성 사업체가 없습니다.',pending:'승인 대기 중인 사업체가 없습니다.',suspect:'애국 의심 가게가 없습니다.'};
     el.innerHTML=`<div class="empty-state"><i class="ti ti-building" aria-hidden="true"></i>${msgs[type]}</div>`;
     return;
   }
@@ -377,22 +417,18 @@ function renderList(elId,list,type){
     const src=b.thumb||PLACEHOLDER[b.category]||null;
     const ea=s=>(s||'').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 
-    // 썸네일
     let overlayHtml='';
-    if(type==='cancelled') overlayHtml='<div class="thumb-overlay overlay-cancelled"><span>취소됨</span></div>';
-    if(type==='suspect')   overlayHtml='<div class="thumb-overlay overlay-suspect"><span>⚠ 의심 가게</span></div>';
-    if(type==='pending')   overlayHtml='<div class="thumb-overlay overlay-pending"><span>승인 대기</span></div>';
+    if(type==='suspect') overlayHtml='<div class="thumb-overlay overlay-suspect"><span>⚠ 의심 가게</span></div>';
+    if(type==='pending') overlayHtml='<div class="thumb-overlay overlay-pending"><span>승인 대기</span></div>';
 
     const thumbHtml=src
       ?`<div class="biz-thumb-wrap"><img class="biz-thumb" src="${src}" alt="${ea(b.name)}" loading="lazy"
-           onerror="this.parentElement.innerHTML='<div class=biz-thumb-placeholder><i class=ti style=font-size:26px aria-hidden=true>📷</i><span>이미지 없음</span></div>'" />${overlayHtml}</div>`
+           onerror="this.parentElement.innerHTML='<div class=biz-thumb-placeholder><i class=ti style=font-size:26px>📷</i><span>이미지 없음</span></div>'" />${overlayHtml}</div>`
       :`<div class="biz-thumb-wrap"><div class="biz-thumb-placeholder"><i class="ti ti-photo" style="font-size:26px;" aria-hidden="true"></i><span>사진 없음</span></div>${overlayHtml}</div>`;
 
-    // 상태 태그
-    const tagMap={active:trust.cls,pending:'tag-pending',suspect:'tag-suspect',cancelled:'tag-cancelled'};
-    const labelMap={active:trust.label,pending:'승인 대기',suspect:'애국 의심',cancelled:'취소됨'};
+    const tagMap={active:trust.cls,pending:'tag-pending',suspect:'tag-suspect'};
+    const labelMap={active:trust.label,pending:'승인 대기',suspect:'애국 의심'};
 
-    // 주소
     const addrHtml=b.address
       ?`<div style="position:relative;display:inline-block;margin-bottom:8px;">
           <span class="biz-address" onclick="toggleMap(event,'mp-${b.id}')">
@@ -402,20 +438,17 @@ function renderList(elId,list,type){
           </span>
           <div class="map-popup" id="mp-${b.id}">
             <a class="map-item" href="${naverUrl(ea(b.address),ea(b.name))}" target="_blank" rel="noopener">
-              <img class="map-logo" src="https://ssl.pstatic.net/static/maps/mantle/map/ico_navermap.png" onerror="this.style.display='none'" alt="" />
-              네이버지도
+              <img class="map-logo" src="https://ssl.pstatic.net/static/maps/mantle/map/ico_navermap.png" onerror="this.style.display='none'" alt="" />네이버지도
             </a>
             <div class="map-div"></div>
             <a class="map-item" href="${kakaoUrl(ea(b.address),ea(b.name))}" target="_blank" rel="noopener">
-              <img class="map-logo" src="https://t1.kakaocdn.net/kakaocorp/kakaocorp/admin/5cd97e7f017800001.png" onerror="this.style.display='none'" alt="" />
-              카카오지도
+              <img class="map-logo" src="https://t1.kakaocdn.net/kakaocorp/kakaocorp/admin/5cd97e7f017800001.png" onerror="this.style.display='none'" alt="" />카카오지도
             </a>
           </div>
         </div>`
       :`<div style="font-size:11px;color:var(--text-tert);margin-bottom:8px;">주소 미등록</div>`;
 
-    // 신고 섹션 (pending 제외)
-    const reportSectionHtml = type!=='pending' ? `
+    const reportHtml = type!=='pending' ? `
       <div class="report-section">
         <div class="report-row">
           <span class="report-count-label">신고 수</span>
@@ -423,18 +456,15 @@ function renderList(elId,list,type){
         </div>
         <div class="dots-row">${dots}</div>
         <div class="report-footer">
-          <span style="font-size:11px;color:var(--text-tert);">
-            누적도
-            <span class="tip-wrap">
-              <i class="ti ti-help-circle tip-icon" aria-hidden="true"></i>
+          <span style="font-size:11px;color:var(--text-tert);">누적도
+            <span class="tip-wrap"><i class="ti ti-help-circle tip-icon" aria-hidden="true"></i>
               <span class="tip-box">점이 많을수록 신고가 많이 누적된 상태입니다.</span>
             </span>
           </span>
-          ${type==='active'?`<button class="btn-sm btn-report" onclick="openReportModal(${b.id})" ${already?'disabled':''}>${already?'신고완료':'신고하기'}</button>`:''}
+          ${type==='active'?`<button class="btn-report" onclick="openReportModal(${b.id})" ${already?'disabled':''}>${already?'신고완료':'신고하기'}</button>`:''}
         </div>
       </div>` : `<div style="font-size:12px;color:var(--text-tert);padding-top:9px;border-top:0.5px solid var(--border);">관리자 검토 대기 중</div>`;
 
-    // 관리자 액션
     let adminHtml='';
     if(isAdmin){
       if(type==='pending'){
@@ -442,15 +472,13 @@ function renderList(elId,list,type){
           <button class="btn-sm btn-approve" onclick="approveBiz(${b.id})"><i class="ti ti-check" aria-hidden="true"></i> 승인</button>
           <button class="btn-sm btn-reject"  onclick="rejectBiz(${b.id})"><i class="ti ti-x" aria-hidden="true"></i> 거절</button>
         </div>`;
-      } else if(type==='active'||type==='suspect'){
+      } else if(type==='active'){
         adminHtml=`<div class="admin-actions">
-          ${type==='active'?`<button class="btn-sm btn-suspect" onclick="markSuspect(${b.id})"><i class="ti ti-alert-triangle" aria-hidden="true"></i> 의심 가게 지정</button>`:''}
-          ${type==='suspect'?`<button class="btn-sm btn-approve" onclick="unmarkSuspect(${b.id})"><i class="ti ti-arrow-back-up" aria-hidden="true"></i> 활성으로 복귀</button>`:''}
-          <button class="btn-sm btn-reject" onclick="cancelBiz(${b.id})"><i class="ti ti-ban" aria-hidden="true"></i> 취소 처리</button>
+          <button class="btn-sm btn-suspect" onclick="markSuspect(${b.id})"><i class="ti ti-alert-triangle" aria-hidden="true"></i> 의심 가게 지정</button>
         </div>`;
-      } else if(type==='cancelled'){
+      } else if(type==='suspect'){
         adminHtml=`<div class="admin-actions">
-          <button class="btn-sm btn-approve" onclick="restoreBiz(${b.id})"><i class="ti ti-arrow-back-up" aria-hidden="true"></i> 복구</button>
+          <button class="btn-sm btn-approve" onclick="unmarkSuspect(${b.id})"><i class="ti ti-arrow-back-up" aria-hidden="true"></i> 활성으로 복귀</button>
         </div>`;
       }
     }
@@ -466,7 +494,7 @@ function renderList(elId,list,type){
         <div class="biz-category">${b.category}</div>
         ${addrHtml}
         <div class="biz-desc">${b.desc||'소개 없음'}</div>
-        ${reportSectionHtml}
+        ${reportHtml}
         ${adminHtml}
       </div>
     </article>`;
@@ -474,49 +502,16 @@ function renderList(elId,list,type){
 }
 
 /* ── 관리자 액션 ── */
-function toggleAdminMode(){
-  isAdmin=!isAdmin;
-  document.getElementById('admin-btn-label').textContent=isAdmin?'관리자 모드 끄기':'관리자 모드';
-  document.getElementById('admin-bar').style.display=isAdmin?'flex':'none';
-  render();
-  showToast(isAdmin?'관리자 모드 활성화됨':'관리자 모드 종료됨');
-}
-function approveBiz(id){
-  const b=db.businesses.find(b=>b.id===id);
-  if(b){b.status='active';b.views=Math.max(b.views,1);}
-  render(); showToast(`'${b.name}' 승인 완료`);
-}
-function rejectBiz(id){
-  const b=db.businesses.find(b=>b.id===id);
-  if(b) db.businesses=db.businesses.filter(x=>x.id!==id);
-  render(); showToast(`'${b.name}' 등록 거절됨`);
-}
-function markSuspect(id){
-  const b=db.businesses.find(b=>b.id===id);
-  if(b) b.status='suspect';
-  render(); showToast(`'${b.name}'을(를) 애국 의심 가게로 지정했습니다.`);
-}
-function unmarkSuspect(id){
-  const b=db.businesses.find(b=>b.id===id);
-  if(b) b.status='active';
-  render(); showToast(`'${b.name}'을(를) 활성 목록으로 복귀시켰습니다.`);
-}
-function cancelBiz(id){
-  const b=db.businesses.find(b=>b.id===id);
-  if(b) b.status='cancelled';
-  render(); showToast(`'${b.name}'이(가) 취소 처리되었습니다.`);
-}
-function restoreBiz(id){
-  const b=db.businesses.find(b=>b.id===id);
-  if(b){b.status='active';b.reports=0;b.reportedBy=[];}
-  render(); showToast(`'${b.name}'이(가) 복구되었습니다.`);
-}
+function approveBiz(id){const b=db.businesses.find(b=>b.id===id);if(b){b.status='active';b.views=Math.max(b.views,1);}render();showToast(`'${b.name}' 승인 완료`);}
+function rejectBiz(id){const b=db.businesses.find(b=>b.id===id);if(b)db.businesses=db.businesses.filter(x=>x.id!==id);render();showToast(`'${b.name}' 등록 거절됨`);}
+function markSuspect(id){const b=db.businesses.find(b=>b.id===id);if(b)b.status='suspect';render();showToast(`'${b.name}'을(를) 애국 의심 가게로 지정했습니다.`);}
+function unmarkSuspect(id){const b=db.businesses.find(b=>b.id===id);if(b)b.status='active';render();showToast(`'${b.name}'을(를) 활성 목록으로 복귀시켰습니다.`);}
 
 /* ── 탭 ── */
 function switchTab(tab,btn){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
-  ['active','pending','suspect','cancelled'].forEach(t=>{
+  ['active','pending','suspect'].forEach(t=>{
     document.getElementById('tab-'+t).style.display=t===tab?'':'none';
   });
 }
@@ -532,12 +527,9 @@ function openRegisterModal(){
 function closeModal(id){document.getElementById(id).classList.remove('open');}
 
 function handleThumbChange(e){
-  const f=e.target.files[0];
-  if(!f)return;
+  const f=e.target.files[0]; if(!f)return;
   if(f.size>MAX_FILE_SIZE){showToast('파일 크기는 5MB 이하여야 합니다.');return;}
-  const r=new FileReader();
-  r.onload=ev=>applyThumb(ev.target.result);
-  r.readAsDataURL(f);
+  const r=new FileReader(); r.onload=ev=>applyThumb(ev.target.result); r.readAsDataURL(f);
 }
 function applyThumb(url){
   pendingThumb=url;
@@ -547,14 +539,12 @@ function applyThumb(url){
   document.getElementById('thumb-remove-btn').style.display='flex';
 }
 function removeThumb(){
-  pendingThumb=null;
-  document.getElementById('thumb-input').value='';
+  pendingThumb=null; document.getElementById('thumb-input').value='';
   const img=document.getElementById('thumb-preview-img');
   img.style.display='none'; img.src='';
   document.getElementById('upload-placeholder').style.display='';
   document.getElementById('thumb-remove-btn').style.display='none';
 }
-
 const zone=document.getElementById('upload-zone');
 zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('drag-over');});
 zone.addEventListener('dragleave',()=>zone.classList.remove('drag-over'));
@@ -565,7 +555,6 @@ zone.addEventListener('drop',e=>{
   if(f.size>MAX_FILE_SIZE){showToast('파일 크기는 5MB 이하여야 합니다.');return;}
   const r=new FileReader(); r.onload=ev=>applyThumb(ev.target.result); r.readAsDataURL(f);
 });
-
 function submitRegistration(){
   const name=document.getElementById('reg-name').value.trim();
   const category=document.getElementById('reg-category').value;
@@ -593,38 +582,26 @@ function openReportModal(id){
 function submitReport(){
   const reason=document.getElementById('report-reason').value;
   if(!reason){showToast('신고 사유를 선택해 주세요.');return;}
-  const sid=getSid();
-  const b=db.businesses.find(b=>b.id===reportingId);
+  const sid=getSid(), b=db.businesses.find(b=>b.id===reportingId);
   if(!b)return;
   if(b.reportedBy.includes(sid)){showToast('이미 신고한 사업체입니다.');return;}
   b.reportedBy.push(sid); b.reports++; b.views=Math.max(b.views,b.reports);
-  const score=wilsonScore(b.reports,b.views);
-  // 윌슨 스코어 초과 시 자동 취소
-  if(score>WILSON_THRESHOLD) b.status='cancelled';
   render(); closeModal('report-modal');
-  if(b.status==='cancelled'){
-    showToast(`신고 누적으로 '${b.name}'이(가) 자동 취소되었습니다.`);
-    setTimeout(()=>switchTab('cancelled',document.querySelectorAll('.tab')[3]),1300);
-  } else {
-    showToast(`신고 접수 완료. 누적 신고: ${b.reports}건`);
-  }
+  showToast(`신고 접수 완료. 누적 신고: ${b.reports}건`);
 }
 
 /* ── 지도 팝업 ── */
 function toggleMap(e,id){
   e.stopPropagation();
-  const p=document.getElementById(id), wasOpen=p.classList.contains('open');
+  const p=document.getElementById(id),was=p.classList.contains('open');
   document.querySelectorAll('.map-popup.open').forEach(x=>x.classList.remove('open'));
-  if(!wasOpen) p.classList.add('open');
+  if(!was)p.classList.add('open');
 }
 document.addEventListener('click',()=>document.querySelectorAll('.map-popup.open').forEach(p=>p.classList.remove('open')));
-
-/* ── 모달 바깥 클릭 ── */
 document.querySelectorAll('.modal-bg').forEach(m=>{
   m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');});
 });
 
-/* ── 토스트 ── */
 function showToast(msg){
   const t=document.getElementById('toast');
   t.textContent=msg; t.classList.add('show');
