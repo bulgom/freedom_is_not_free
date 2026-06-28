@@ -103,6 +103,10 @@
     .btn-suspect{background:#fef3c7;color:#92400e;border:0.5px solid var(--border-warn);}
     .btn-suspect:hover{background:#fde68a;}
     .admin-actions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
+    .btn-delete{background:#f3f4f6;color:#374151;border:0.5px solid rgba(0,0,0,0.15);}
+    .btn-delete:hover{background:#fee2e2;color:var(--text-danger);border-color:var(--border-danger);}
+    .btn-cancel-report{border-color:var(--border-sec)!important;color:var(--text-sec)!important;}
+    .btn-cancel-report:hover{background:var(--bg-sec)!important;}
     /* 모달 */
     .modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:center;justify-content:center;padding:1rem;}
     .modal-bg.open{display:flex;}
@@ -292,6 +296,22 @@
   </div>
 </div>
 
+<div class="modal-bg" id="delete-confirm-modal">
+  <div class="modal">
+    <h2>사업체 삭제</h2>
+    <p style="font-size:14px;color:var(--text-sec);margin-bottom:1rem;line-height:1.6;">
+      <strong id="delete-target-name" style="color:var(--text);"></strong>을(를) 삭제하시겠습니까?
+    </p>
+    <div style="font-size:13px;color:var(--text-danger);background:var(--bg-danger);border:0.5px solid var(--border-danger);border-radius:var(--radius-md);padding:10px 13px;">
+      <i class="ti ti-alert-triangle" style="font-size:13px;vertical-align:-1px;margin-right:4px;" aria-hidden="true"></i>
+      삭제 후에는 복구할 수 없습니다.
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('delete-confirm-modal')">취소</button>
+      <button class="btn btn-primary" style="background:#dc2626;" onclick="confirmDelete()">삭제 확인</button>
+    </div>
+  </div>
+</div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -459,7 +479,7 @@ function renderList(elId,list,type){
               <span class="tip-box">점이 많을수록 신고가 많이 누적된 상태입니다.</span>
             </span>
           </span>
-          ${type==='active'?`<button class="btn-report" onclick="openReportModal(${b.id})" ${already?'disabled':''}>${already?'신고완료':'신고하기'}</button>`:''}
+          ${type==='active'?(!already?`<button class="btn-report" onclick="openReportModal(${b.id})">신고하기</button>`:`<button class="btn-report btn-cancel-report" onclick="cancelReport(${b.id})"><i class="ti ti-arrow-back-up" style="font-size:11px;"></i> 신고취소</button>`):''}
         </div>
       </div>` : `<div style="font-size:12px;color:var(--text-tert);padding-top:9px;border-top:0.5px solid var(--border);">관리자 검토 대기 중</div>`;
 
@@ -469,14 +489,17 @@ function renderList(elId,list,type){
         adminHtml=`<div class="admin-actions">
           <button class="btn-sm btn-approve" onclick="approveBiz(${b.id})"><i class="ti ti-check" aria-hidden="true"></i> 승인</button>
           <button class="btn-sm btn-reject"  onclick="rejectBiz(${b.id})"><i class="ti ti-x" aria-hidden="true"></i> 거절</button>
+          <button class="btn-sm btn-delete" onclick="deleteBiz(${b.id})"><i class="ti ti-trash" aria-hidden="true"></i> 삭제</button>
         </div>`;
       } else if(type==='active'){
         adminHtml=`<div class="admin-actions">
           <button class="btn-sm btn-suspect" onclick="markSuspect(${b.id})"><i class="ti ti-alert-triangle" aria-hidden="true"></i> 의심 가게 지정</button>
+          <button class="btn-sm btn-delete" onclick="deleteBiz(${b.id})"><i class="ti ti-trash" aria-hidden="true"></i> 삭제</button>
         </div>`;
       } else if(type==='suspect'){
         adminHtml=`<div class="admin-actions">
           <button class="btn-sm btn-approve" onclick="unmarkSuspect(${b.id})"><i class="ti ti-arrow-back-up" aria-hidden="true"></i> 활성으로 복귀</button>
+          <button class="btn-sm btn-delete" onclick="deleteBiz(${b.id})"><i class="ti ti-trash" aria-hidden="true"></i> 삭제</button>
         </div>`;
       }
     }
@@ -500,6 +523,31 @@ function renderList(elId,list,type){
 }
 
 /* ── 관리자 액션 ── */
+let deletingId=null;
+function deleteBiz(id){
+  deletingId=id;
+  const b=db.businesses.find(b=>b.id===id);
+  document.getElementById('delete-target-name').textContent=b?b.name:'';
+  document.getElementById('delete-confirm-modal').classList.add('open');
+}
+function confirmDelete(){
+  if(deletingId===null)return;
+  const b=db.businesses.find(b=>b.id===deletingId);
+  const name=b?b.name:'';
+  db.businesses=db.businesses.filter(x=>x.id!==deletingId);
+  deletingId=null;
+  closeModal('delete-confirm-modal');
+  render();
+  showToast(name+"이(가) 삭제되었습니다.");
+}
+function cancelReport(id){
+  const sid=getSid(), b=db.businesses.find(b=>b.id===id);
+  if(!b||!b.reportedBy.includes(sid))return;
+  b.reportedBy=b.reportedBy.filter(s=>s!==sid);
+  b.reports=Math.max(0,b.reports-1);
+  render();
+  showToast('신고가 취소되었습니다.');
+}
 function approveBiz(id){const b=db.businesses.find(b=>b.id===id);if(b){b.status='active';b.views=Math.max(b.views,1);}render();showToast(`'${b.name}' 승인 완료`);}
 function rejectBiz(id){const b=db.businesses.find(b=>b.id===id);if(b)db.businesses=db.businesses.filter(x=>x.id!==id);render();showToast(`'${b.name}' 등록 거절됨`);}
 function markSuspect(id){const b=db.businesses.find(b=>b.id===id);if(b)b.status='suspect';render();showToast(`'${b.name}'을(를) 애국 의심 가게로 지정했습니다.`);}
