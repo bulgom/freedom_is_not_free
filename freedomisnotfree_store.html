@@ -330,11 +330,12 @@ function wilsonScore(r,v){
   const p=r/v,z2=Z*Z;
   return Math.max(0,(p+z2/(2*v)-Z*Math.sqrt((p*(1-p)+z2/(4*v))/v))/(1+z2/v));
 }
-function trustLevel(s){
-  if(s>=WILSON_THRESHOLD)     return{level:4,label:'신고 많음',cls:'tag-warning',dotCls:'red'};
-  if(s>=WILSON_THRESHOLD*0.6) return{level:3,label:'신고 있음',cls:'tag-caution',dotCls:'amber'};
-  if(s>=WILSON_THRESHOLD*0.3) return{level:2,label:'신고 소수',cls:'tag-caution',dotCls:'amber'};
-  return                             {level:1,label:'신고 없음',cls:'tag-good',   dotCls:'green'};
+// 신고 건수 기반 표시 (윌슨 스코어는 내부 판단용으로만 유지)
+function trustLevel(reports){
+  if(reports===0)  return{level:1,label:'신고 없음',cls:'tag-good',   dotCls:'green'};
+  if(reports<=2)   return{level:2,label:'신고 소수',cls:'tag-caution',dotCls:'amber'};
+  if(reports<=5)   return{level:3,label:'신고 있음',cls:'tag-caution',dotCls:'amber'};
+  return                 {level:4,label:'신고 많음',cls:'tag-warning', dotCls:'red'};
 }
 function dotsHtml(level,dotCls){
   const n=level>=4?5:level===3?4:level===2?2:1;
@@ -429,7 +430,7 @@ function renderList(elId,list,type){
   }
   el.innerHTML=list.map(b=>{
     const score=wilsonScore(b.reports,b.views);
-    const trust=trustLevel(score);
+    const trust=trustLevel(b.reports);
     const dots=dotsHtml(trust.level,trust.dotCls);
     const already=b.reportedBy.includes(sid);
     const src=b.thumb||PLACEHOLDER[b.category]||null;
